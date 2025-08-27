@@ -1,2 +1,7 @@
-<country-search-input/>
-<country-list/>
+<country-search-input placeholder="Buscar por pais" (value)="query.set($event)" />
+
+@if (contryResource.error()){
+<h3 class="mt-6">{{contryResource.error()}}</h3>
+} @if(contryResource.hasValue()) {
+<country-list [countries]="contryResource.value()!" />
+}
