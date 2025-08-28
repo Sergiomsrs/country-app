@@ -3,24 +3,26 @@ import type { RESTCountry } from "../interfaces/rest-countries.interface";
 
 export class CountryMapper {
 
-/* Transformar un pais de la api a nuestra interfaz propia */
+    /* Transformar un pais de la api a nuestra interfaz propia */
 
 
-    static mapRestCountryToCountry ( restCountry: RESTCountry ): Country{
+    static mapRestCountryToCountry(restCountry: RESTCountry): Country {
         return {
             capital: restCountry.capital.join(','),
             cca2: restCountry.cca2,
             flag: restCountry.flag,
             flagSvg: restCountry.flags.svg,
-            name: restCountry.translations['spa'].common ?? 'No Spanish Name' ,
+            name: restCountry.translations['spa'].common ?? 'No Spanish Name',
             population: restCountry.population,
+            region: restCountry.region,
+            subRegion: restCountry.subregion,
         }
     }
 
-/* Transformar un arreglo de paises de la api a nuestra interfaz propia */
+    /* Transformar un arreglo de paises de la api a nuestra interfaz propia */
 
 
-    static mapRestCountryArrayToCountryArray (restCountries: RESTCountry[]): Country[] {
+    static mapRestCountryArrayToCountryArray(restCountries: RESTCountry[]): Country[] {
         return restCountries.map(this.mapRestCountryToCountry)
     }
 
